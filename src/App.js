@@ -69,6 +69,8 @@ const App = () => {
     }
   }
 
+  console.log(photos);
+
   return (
     <div className="App">
       {/* {photos &&
@@ -93,22 +95,26 @@ const App = () => {
 
       {photos &&
         photos.map((item, index) => {
-          let randomFirst = random.first();
-          let randomPlace = random.place();
-
           return (
             <div className="image-wrapper" key={index}>
               <div className="image-header">
                 <div className="image-header-l">
                   <div className="image-header-l-img">
                     <img
-                      src="https://source.unsplash.com/featured/?people"
+                      src={
+                        item.user.profile_image.medium ||
+                        "https://source.unsplash.com/featured/?people"
+                      }
                       alt="profile dimage"
                     />
                   </div>
                   <div className="image-header-l-text">
-                    <p id="image-name">{randomFirst}</p>
-                    <p id="image-local">{randomPlace}</p>
+                    <p id="image-name">
+                      {item.user.instagram_username || item.user.first_name}
+                    </p>
+                    <p id="image-local">
+                      {item.location.city || random.place()}
+                    </p>
                   </div>
                 </div>
                 <div className="image-header-r">
@@ -151,26 +157,20 @@ const App = () => {
 
                 <div class="image-footer-bottom">
                   <div class="top">
-                    <p>
-                      {Math.floor(
-                        Math.random() * (250000 - 1 + 1) + 1
-                      ).toLocaleString()}{" "}
-                      likes
-                    </p>
+                    <p>{`${item.user.total_likes} likes`}</p>
                   </div>
                   <div class="center">
                     <p>
-                      <b>{randomFirst}</b>
+                      <b>
+                        {item.user.instagram_username || item.user.first_name}
+                      </b>
                     </p>
                     <p id="caption">{item.alt_description}</p>
                   </div>
                   <div class="bottom">
                     <p>
-                      View all{" "}
-                      {Math.floor(
-                        Math.random() * (783 - 2 + 1) + 2
-                      ).toLocaleString()}{" "}
-                      comments
+                      {`View all ${Number(item.views).toLocaleString()}
+                      comments`}
                     </p>
                   </div>
                 </div>
