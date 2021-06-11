@@ -50,3 +50,6 @@ Once the application is started, it will open in your browser.
 For the best results, view the page in mobile
 You can do this in chrome with the Inspect tool,
 just right click on the page, click inspect, and click the mobile phone on the top right ov the inspect console.
+
+
+![Here it is in action](https://media1.giphy.com/media/FrIS9POqJP01AsWaap/giphy.gif)
